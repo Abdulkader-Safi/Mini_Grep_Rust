@@ -26,3 +26,31 @@ impl Config {
         Ok(Config { query, file_name })
     }
 }
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+Safi, Fast, Productive.
+Pic Three.";
+
+        assert_eq!(vec!["Safi, Fast, Productive."], search(query, contents));
+    }
+}
