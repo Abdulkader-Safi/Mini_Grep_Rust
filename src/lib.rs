@@ -32,6 +32,9 @@ impl Config {
         let query = args[1].clone();
         let file_name = args[2].clone();
 
+        // in bash
+        // export CASE_SENSITIVE=true
+        // unset CASE_SENSITIVE
         let case_sensitive = env::var("CASE_SENSITIVE").is_err();
 
         Ok(Config {
