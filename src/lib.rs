@@ -11,7 +11,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     };
 
     for line in result {
-        println!("{}", line);
+        eprintln!("{}", line);
     }
 
     Ok(())
